@@ -136,7 +136,7 @@ jobs:
 
     - name: Publish wheels and sdist local
       run: |
-        pip install twine --upgrade
+        pip install packaging>=24.2 twine --upgrade
         twine upload --skip-existing --repository-url=https://localhost:8080/legacy dist/*
 
     #- name: Publish wheels and sdist on test.pypi.org
