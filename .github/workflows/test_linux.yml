@@ -124,7 +124,7 @@ jobs:
     - name: Install twine
       run:
         # upgrade packaging for PEP 639
-        pip install --upgrade twine packaging>=24.2
+        pip install --upgrade twine
 
     - name: Check wheels and dist
       run:
