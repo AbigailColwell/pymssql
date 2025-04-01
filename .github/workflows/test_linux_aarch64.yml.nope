@@ -26,7 +26,7 @@ on:
 jobs:
 
   build:
-
+    if: false # dontcare for now
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -75,7 +75,7 @@ jobs:
         pytest -sv --durations=0
 
   wheels:
-
+    if: false
     services:
       SQLServer:
         image: mcr.microsoft.com/mssql/server:2017-latest

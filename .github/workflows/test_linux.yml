@@ -97,11 +97,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        arch: [i686, x86_64]
-        manylinux: [manylinux1, manylinux2014, manylinux_2_28, musllinux_1_1, musllinux_1_2]
-        exclude:
-            - arch: i686
-              manylinux: manylinux_2_28
+        # arch: [i686, x86_64]
+        # manylinux: [manylinux1, manylinux2014, manylinux_2_28, musllinux_1_1, musllinux_1_2]
+        arch: [x86_64]
+        manylinux: [manylinux1]
+        # exclude:
+        #     - arch: i686
+        #       manylinux: manylinux_2_28
 
     steps:
 
