@@ -29,7 +29,7 @@ on:
 jobs:
 
   build:
-
+    if: false # im just tseting,
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -88,6 +88,10 @@ jobs:
           SA_PASSWORD: sqlServerPassw0rd
         ports:
           - 1433:1433
+      PyPiServer:
+        image: pypiserver/pypiserver
+        ports:
+          - 8080:8080
 
     runs-on: ubuntu-latest
     strategy:
@@ -127,6 +131,11 @@ jobs:
       run: |
         pip install twine --upgrade
         twine upload --skip-existing -u __token__ -p ${{secrets.PYMSSQL_PYPI_TOKEN}} dist/*
+
+    - name: Publish wheels and sdist local
+      run: |
+        pip install twine --upgrade
+        twine upload --skip-existing --repository-url=https://localhost:8080/legacy dist/*
 
     #- name: Publish wheels and sdist on test.pypi.org
       #if: github.repository_owner == 'pymssql' && github.ref == 'refs/heads/master'
